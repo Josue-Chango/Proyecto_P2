@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        PROYECTO ESTUDIANTES
+    </title>
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <div class="container">
+        <h1 class="text-center mb-4">Estado del Curso</h1>
+        
+        <div class="input-group mb-4">
+            <input type="number" id="notaInput" class="form-control" placeholder="Ingrese una nota" required min="0" max="10">
+            <button class="btn btn-primary" id="agregarNotaBtn">Agregar Nota</button>
+        </div>
+
+        <div id="notasList" class="mb-4"></div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Resultados</h5>
+                <p class="card-text">Total de Aprobados: <span id="aprobados" class="fw-bold">0</span></p>
+                <p class="card-text">Total de Supletorio: <span id="supletorio" class="fw-bold">0</span></p>
+                <p class="card-text">Total de Reprobados: <span id="reprobados" class="fw-bold">0</span></p>
+                <p class="card-text">Promedio del curso: <span id="promedio" class="fw-bold">0</span></p>
+                <p class="card-text">Estado del curso: <span id="estado" class="fw-bold">En riesgo</span></p>
+            </div>
+        </div>
+    </div>
+    </main>
+    <footer></footer>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./public/js/script.js"></script>
+</body>
+
+</html>
