@@ -1,0 +1,10 @@
+.container {
+    margin-top: 50px;
+}
+
+.nota-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}

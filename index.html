@@ -9,16 +9,19 @@
     </title>
 
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/personalizado.css">
 </head>
 
-<body>
+<body class="bg-dark">
     <header></header>
     <main>
         <div class="container">
-        <h1 class="text-center mb-4">Estado del Curso</h1>
+        <h1 class="text-center mb-4 text-white">
+            Estado del Curso
+        </h1>
         
         <div class="input-group mb-4">
-            <input type="number" id="notaInput" class="form-control" placeholder="Ingrese una nota" required min="0" max="10">
+            <input type="number" id="notaInput" class="form-control" placeholder="Ingrese una nota" required min="0" max="10" pattern="[0-9]">
             <button class="btn btn-primary" id="agregarNotaBtn">Agregar Nota</button>
         </div>
 
@@ -27,11 +30,11 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Resultados</h5>
-                <p class="card-text">Total de Aprobados: <span id="aprobados" class="fw-bold">0</span></p>
-                <p class="card-text">Total de Supletorio: <span id="supletorio" class="fw-bold">0</span></p>
-                <p class="card-text">Total de Reprobados: <span id="reprobados" class="fw-bold">0</span></p>
-                <p class="card-text">Promedio del curso: <span id="promedio" class="fw-bold">0</span></p>
-                <p class="card-text">Estado del curso: <span id="estado" class="fw-bold">En riesgo</span></p>
+                <div class="card-text">Total de Aprobados: <p id="aprobados" class="fw-bold">0</p></div>
+                <div class="card-text">Total de Supletorio: <p id="supletorio" class="fw-bold">0</p></div>
+                <div class="card-text">Total de Reprobados: <p id="reprobados" class="fw-bold">0</p></div>
+                <div class="card-text">Promedio del curso: <p id="promedio" class="fw-bold">0</p></div>
+                <div class="card-text">Estado del curso: <p id="estado" class="fw-bold">En riesgo</p></div>
             </div>
         </div>
     </div>

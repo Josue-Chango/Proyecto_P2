@@ -1,14 +1,19 @@
 let notas = [];
+var agregarNotaBtn = document.getElementById('agregarNotaBtn');
+var aprobados = document.getElementById('aprobados');
+var supletorio = document.getElementById('supletorio');
+var reprobados = document.getElementById('reprobados');
+var promedio = document.getElementById('promedio');
+var estado = document.getElementById('estado');
 
-// Agregar evento al botón de agregar nota
-document.getElementById('agregarNotaBtn').addEventListener('click', function() {
-    let input = document.getElementById('notaInput').value;
-    let nota = parseFloat(input.trim());
+agregarNotaBtn.addEventListener('click', function() {
+    let notaInput = document.getElementById('notaInput').value;
+    let nota = parseFloat(notaInput.trim()); //el trim hace que se quite los espacios que estan en blanco o vacios
 
-    if (!isNaN(nota) && nota >= 0 && nota <= 10) {
-        notas.push(nota); // Agregar la nota al arreglo
-        document.getElementById('notaInput').value = ''; // Limpiar el campo de entrada
-        mostrarNotas(); // Actualizar la lista de notas
+    if (nota >= 0 && nota <= 10) {
+        notas.push(nota);
+        document.getElementById('notaInput').value = '';
+        mostrarNotas();
     } else {
         alert("Por favor, ingrese una nota válida entre 0 y 10.");
     }
@@ -16,25 +21,23 @@ document.getElementById('agregarNotaBtn').addEventListener('click', function() {
 
 function mostrarNotas() {
     const notasList = document.getElementById('notasList');
-    notasList.innerHTML = ''; // Limpiar la lista antes de mostrar las notas
-
-    // Mostrar cada nota en un label con un botón para eliminar
+    notasList.innerHTML = '';
     notas.forEach((nota, index) => {
         const notaLabel = document.createElement('div');
         notaLabel.className = 'nota-label';
         notaLabel.innerHTML = `
-            <span>Nota: ${nota}</span>
-            <button class="btn btn-danger btn-sm" onclick="eliminarNota(${index})">Eliminar</button>
+            <p class="text-white">Nota: ${nota}</p>
+            <button class="btn btn-danger btn-sm text-white" onclick="eliminarNota(${index})">Eliminar</button>
         `;
         notasList.appendChild(notaLabel);
     });
 
-    calcularResultados(); // Calcular y mostrar resultados
+    calcularResultados();
 }
 
 function eliminarNota(index) {
-    notas.splice(index, 1); // Eliminar la nota del arreglo
-    mostrarNotas(); // Actualizar la lista de notas
+    notas.splice(index, 1); // se elimina la nota 
+    mostrarNotas();
 }
 
 function calcularResultados() {
@@ -43,11 +46,9 @@ function calcularResultados() {
     let contReprobados = 0;
     let sumaNotas = 0;
 
-    // Recorrer el arreglo de notas
     notas.forEach(nota => {
-        sumaNotas += nota; // Sumar todas las notas
+        sumaNotas += nota;
 
-        // Clasificar las notas
         if (nota >= 7) {
             contAprobados++;
         } else if (nota >= 5) {
@@ -57,26 +58,23 @@ function calcularResultados() {
         }
     });
 
-    // Calcular el promedio general
-    let promedio;
+    let promedioFinal;
     if (notas.length > 0) {
-        promedio = sumaNotas / notas.length;
+        promedioFinal = sumaNotas / notas.length;
     } else {
-        promedio = 0;
+        promedioFinal = 0;
     }
 
-    // Determinar el estado del curso
     let estadoCurso;
-    if (promedio >= 7) {
+    if (promedioFinal >= 7) {
         estadoCurso = 'Aprobado';
     } else {
         estadoCurso = 'En riesgo';
     }
 
-    // Mostrar los resultados en el HTML
-    document.getElementById('aprobados').textContent = contAprobados;
-    document.getElementById('supletorio').textContent = contSupletorio;
-    document.getElementById('reprobados').textContent = contReprobados;
-    document.getElementById('promedio').textContent = promedio.toFixed(2);
-    document.getElementById('estado').textContent = estadoCurso;
+    aprobados.textContent = contAprobados;
+    supletorio.textContent = contSupletorio;
+    reprobados.textContent = contReprobados;
+    promedio.textContent = promedioFinal.toFixed(2);
+    estado.textContent = estadoCurso;
 }
